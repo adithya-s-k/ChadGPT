@@ -1,1 +1,1 @@
-# A website using OPEN AI APIS 
+# A website using OPEN AI APIS
