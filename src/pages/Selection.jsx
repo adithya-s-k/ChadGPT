@@ -4,6 +4,7 @@ import OptionSelection from '../components/OptionSelection';
 import Translation from '../components/Translation';
 import { arrayItems } from '../AIOptions';
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function App() {
   const configuration = new Configuration({
@@ -21,8 +22,12 @@ function App() {
 
   const doStuff = async () => {
     let object = { ...option, prompt: input };
-
-    const response = await openai.createCompletion(object);
+    try {
+      const response = await openai.createCompletion(object);
+      setResult(response.data.choices[0].text);
+    } catch (error) {
+      toast('Something went wrong..', { error });
+    }
 
     setResult(response.data.choices[0].text);
   };

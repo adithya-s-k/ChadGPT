@@ -18,11 +18,19 @@ function App() {
   const generateImage = async () => {
     setPlaceholder(`Search ${prompt}..`);
     setLoading(true);
-    const res = await openai.createImage({
-      prompt: prompt,
-      n: 1,
-      size: '512x512',
-    });
+    try {
+      const res = await openai.createImage({
+        prompt: prompt,
+        n: 1,
+        size: '512x512',
+      });
+      setLoading(false);
+      setResult(res.data.data[0].url);
+    } catch (error) {
+      setLoading(false);
+      setPlaceholder('Something went wrong..');
+      toast('Something went wrong..', { error });
+    }
     setLoading(false);
     setResult(res.data.data[0].url);
   };
