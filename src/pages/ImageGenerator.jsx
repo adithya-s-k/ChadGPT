@@ -41,7 +41,7 @@ function App() {
           <h2>Generate an Image using Open AI API</h2>
 
           <textarea
-            className="app-input"
+            className="text-area"
             placeholder={placeholder}
             onChange={(e) => setPrompt(e.target.value)}
             rows="10"

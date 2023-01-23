@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 function App() {
   const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
   });
 
   const openai = new OpenAIApi(configuration);
@@ -32,7 +32,12 @@ function App() {
       {Object.values(option).length === 0 ? (
         <OptionSelection arrayItems={arrayItems} selectOption={selectOption} />
       ) : (
-        <Translation doStuff={doStuff} setInput={setInput} result={result} />
+        <Translation
+          Option={option}
+          doStuff={doStuff}
+          setInput={setInput}
+          result={result}
+        />
       )}
     </div>
   );
