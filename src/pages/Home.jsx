@@ -7,8 +7,8 @@ export default function Home() {
   const navigate = useNavigate();
   const storeKey = () => {
     Cookies.set('api', `${apiInput}`, { expires: 1 });
-    // const cookie = Cookies.get('api');
-    // console.log(cookie);
+    const cookie = Cookies.get('api');
+    console.log(cookie);
     navigate('/select');
   };
 
