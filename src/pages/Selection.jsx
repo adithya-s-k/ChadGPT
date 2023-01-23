@@ -5,10 +5,13 @@ import Translation from '../components/Translation';
 import { arrayItems } from '../AIOptions';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 function App() {
+  const api = Cookies.get('api');
+
   const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    apiKey: api,
   });
 
   const openai = new OpenAIApi(configuration);

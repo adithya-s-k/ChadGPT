@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { Configuration, OpenAIApi } from 'openai';
 import './ImageGenerator.css';
+import Cookies from 'js-cookie';
 
 function App() {
+  const api = Cookies.get('api');
+
   const [prompt, setPrompt] = useState('');
   const [result, setResult] = useState('');
   const [loading, setLoading] = useState(false);
@@ -10,7 +13,7 @@ function App() {
     'Search Bears with Paint Brushes the Starry Night, painted by Vincent Van Gogh..'
   );
   const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    apiKey: api,
   });
 
   const openai = new OpenAIApi(configuration);
